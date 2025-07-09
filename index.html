@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>日吉の母 - おみくじ</title>
+    <style>
+        body {
+            font-family: "Yu Gothic", sans-serif;
+            text-align: center;
+            margin-top: 80px;
+            background-color: #fffbe6;
+        }
+        button {
+            font-size: 1.5rem;
+            padding: 10px 30px;
+            background-color: #e6c200;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        h1 {
+            color: #b40000;
+        }
+        #result {
+            margin-top: 30px;
+            font-size: 1.8rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>日吉の母のありがたいお言葉</h1>
+    <button onclick="drawFortune()">占い</button>
+    <div id="result"></div>
+
+    <script>
+        const fortunes = [
+            "今日は最高の一日になるでしょう。",
+            "中吉。冷静さが幸運を呼びます。",
+            "小吉。身近な人との時間を大切に。",
+            "凶。今日は控えめな行動が吉。",
+            "大吉！新しい挑戦が大成功します。",
+            "末吉。努力が少しずつ実を結びます。",
+            "吉。人との出会いが運気を高めます。"
+        ];
+
+        function drawFortune() {
+            const randomIndex = Math.floor(Math.random() * fortunes.length);
+            const message = fortunes[randomIndex];
+
+            document.getElementById("result").textContent = message;
+
+            const utterance = new SpeechSynthesisUtterance(message);
+            utterance.lang = "ja-JP";
+            speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>
